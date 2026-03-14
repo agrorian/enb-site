@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Eco-Neighbor ($ENB) — A hyper-local community utility token on Solana that rewards daily-wage workers, tradespeople, and volunteers for verified civic actions.">
+<title>Eco-Neighbor $ENB — Your Neighbourhood Work Has Value</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --forest: #1A6B3C;
+    --teal: #00796B;
+    --gold: #F9A825;
+    --gold-light: #FFF8E1;
+    --white: #FFFFFF;
+    --dark: #1B2B1E;
+    --dark-mid: #2D4A32;
+    --cream: #F8F5EF;
+    --muted: #6B7A6E;
+    --border: #D8E8DC;
+    --shadow: rgba(27,43,30,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    background: var(--cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(27,43,30,0.96);
+    backdrop-filter: blur(12px);
+    padding: 0.9rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-brand {
+    display: flex; align-items: center; gap: 0.6rem;
+    text-decoration: none;
+  }
+  .nav-logo {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--forest), var(--gold));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; font-weight: 700; color: white;
+  }
+  .nav-name { color: white; font-weight: 600; font-size: 1rem; }
+  .nav-name span { color: var(--gold); }
+
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .nav-links a {
+    color: rgba(255,255,255,0.8); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--dark) !important;
+    padding: 0.5rem 1.1rem; border-radius: 6px; font-weight: 700 !important;
+  }
+  .nav-cta:hover { background: #FFB300 !important; color: var(--dark) !important; }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 7rem 1.5rem 5rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(26,107,60,0.35) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 70%, rgba(0,121,107,0.2) 0%, transparent 60%);
+  }
+
+  .hero-pattern {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg, #fff 0px, #fff 1px, transparent 1px, transparent 40px
+    );
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 720px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(249,168,37,0.15); border: 1px solid rgba(249,168,37,0.4);
+    color: var(--gold); font-size: 0.78rem; font-weight: 600;
+    padding: 0.35rem 0.9rem; border-radius: 999px;
+    margin-bottom: 1.8rem; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .hero-badge::before { content: "🌿"; font-size: 0.9rem; }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.15;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: rgba(255,255,255,0.72);
+    max-width: 560px;
+    margin-bottom: 2.2rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .btn {
+    display: inline-block; padding: 0.85rem 1.8rem;
+    border-radius: 8px; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--dark);
+  }
+  .btn-primary:hover { background: #FFB300; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,168,37,0.3); }
+  .btn-outline {
+    background: transparent; color: white;
+    border: 1.5px solid rgba(255,255,255,0.35);
+  }
+  .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.08); }
+
+  .hero-stats {
+    position: relative; z-index: 2;
+    display: flex; flex-wrap: wrap; gap: 2rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    animation: fadeUp 1.1s ease both;
+  }
+  .hero-stat { }
+  .hero-stat-num { font-size: 1.5rem; font-weight: 700; color: var(--gold); }
+  .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; }
+
+  /* ===== SECTION COMMON ===== */
+  section { padding: 5rem 1.5rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--teal);
+    margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.2; color: var(--dark);
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem; color: var(--muted);
+    max-width: 560px; line-height: 1.7;
+  }
+
+  /* ===== PROBLEM ===== */
+  #problem { background: white; }
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .problem-card {
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .problem-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow); }
+  .problem-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--forest), var(--teal));
+  }
+  .problem-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+  .problem-who {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 0.5rem;
+  }
+  .problem-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.7rem; color: var(--dark); }
+  .problem-card p { font-size: 0.9rem; color: var(--muted); line-height: 1.65; }
+  .problem-quote {
+    margin-top: 1.2rem; padding: 0.9rem 1rem;
+    background: rgba(26,107,60,0.06); border-left: 3px solid var(--forest);
+    border-radius: 0 8px 8px 0;
+    font-size: 0.85rem; color: var(--dark); font-style: italic; line-height: 1.5;
+  }
+
+  /* ===== HOW IT WORKS ===== */
+  #how { background: var(--dark); }
+  #how .section-title { color: white; }
+  #how .section-label { color: var(--gold); }
+  #how .section-sub { color: rgba(255,255,255,0.6); }
+
+  .steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0; margin-top: 3.5rem; position: relative;
+  }
+  .step {
+    text-align: center; padding: 2.5rem 1.5rem;
+    position: relative;
+  }
+  .step:not(:last-child)::after {
+    content: '→';
+    position: absolute; right: -0.5rem; top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold); font-size: 1.5rem; z-index: 2;
+  }
+  @media (max-width: 768px) { .step:not(:last-child)::after { display: none; } }
+
+  .step-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--forest), var(--teal));
+    color: white; font-size: 1.2rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.2rem;
+    box-shadow: 0 0 0 8px rgba(26,107,60,0.2);
+  }
+  .step-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .step h3 { color: var(--gold); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step p { color: rgba(255,255,255,0.6); font-size: 0.875rem; line-height: 1.6; }
+
+  /* ===== PROFESSIONS ===== */
+  #professions { background: var(--cream); }
+  .prof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+  .prof-item {
+    background: white; border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem 0.75rem;
+    text-align: center;
+    transition: all 0.2s; cursor: default;
+  }
+  .prof-item:hover {
+    border-color: var(--forest); background: rgba(26,107,60,0.04);
+    transform: translateY(-2px); box-shadow: 0 6px 16px var(--shadow);
+  }
+  .prof-emoji { font-size: 1.6rem; display: block; margin-bottom: 0.4rem; }
+  .prof-name { font-size: 0.73rem; font-weight: 600; color: var(--dark); line-height: 1.3; }
+
+  /* ===== DUAL LAYER ===== */
+  #dual { background: white; }
+  .dual-wrap {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 2rem; align-items: center; margin-top: 3rem;
+  }
+  @media (max-width: 640px) {
+    .dual-wrap { grid-template-columns: 1fr; }
+    .dual-connector { transform: rotate(90deg); }
+  }
+
+  .layer-card {
+    border-radius: 20px; padding: 2rem;
+    position: relative; overflow: hidden;
+  }
+  .layer-local {
+    background: linear-gradient(135deg, var(--forest), var(--dark-mid));
+    color: white;
+  }
+  .layer-global {
+    background: linear-gradient(135deg, #004D40, #00695C);
+    color: white;
+  }
+  .layer-badge {
+    display: inline-block; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.8rem; border-radius: 999px;
+    margin-bottom: 1rem;
+  }
+  .layer-local .layer-badge { background: rgba(249,168,37,0.25); color: var(--gold); }
+  .layer-global .layer-badge { background: rgba(255,255,255,0.15); color: white; }
+
+  .layer-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 1.2rem; }
+  .layer-features { list-style: none; }
+  .layer-features li {
+    font-size: 0.875rem; padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; gap: 0.6rem; align-items: flex-start;
+    line-height: 1.4; opacity: 0.9;
+  }
+  .layer-features li::before { content: '✓'; color: var(--gold); flex-shrink: 0; font-weight: 700; }
+  .layer-metaphor {
+    margin-top: 1.2rem; padding: 0.75rem 1rem;
+    background: rgba(255,255,255,0.1); border-radius: 8px;
+    font-size: 0.8rem; font-style: italic; opacity: 0.8;
+  }
+
+  .dual-connector {
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  }
+  .bridge-box {
+    background: var(--gold); color: var(--dark);
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 0.5rem 0.8rem;
+    border-radius: 8px; text-align: center; white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(249,168,37,0.4);
+  }
+  .bridge-arrow { font-size: 1.5rem; color: var(--gold); }
+
+  /* ===== IMPACT NUMBERS ===== */
+  #impact { background: linear-gradient(135deg, var(--forest), var(--teal)); }
+  #impact .section-title { color: white; }
+  #impact .section-label { color: rgba(255,255,255,0.7); }
+
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem; margin-top: 3rem;
+  }
+  .impact-stat {
+    text-align: center; color: white;
+    padding: 2rem 1rem;
+    background: rgba(255,255,255,0.1); border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .impact-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    color: var(--gold); font-weight: 400;
+    display: block;
+  }
+  .impact-label { font-size: 0.9rem; opacity: 0.8; margin-top: 0.3rem; }
+  .impact-note { font-size: 0.72rem; opacity: 0.55; margin-top: 0.2rem; }
+
+  /* ===== INVESTORS ===== */
+  #investors { background: white; }
+  .investor-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .investor-card {
+    border: 1px solid var(--border); border-radius: 16px; padding: 1.8rem;
+    transition: box-shadow 0.2s;
+  }
+  .investor-card:hover { box-shadow: 0 8px 24px var(--shadow); }
+  .investor-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .investor-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--forest); }
+  .investor-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.65; }
+  .investor-tag {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--teal);
+    background: rgba(0,121,107,0.08); padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+  }
+
+  /* ===== PARTNER BUSINESSES ===== */
+  #partner { background: var(--cream); }
+  .partner-inner {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 3rem; align-items: center; margin-top: 3rem;
+  }
+  @media (max-width: 640px) { .partner-inner { grid-template-columns: 1fr; } }
+
+  .partner-cta-box {
+    background: linear-gradient(135deg, var(--forest), var(--dark-mid));
+    border-radius: 20px; padding: 2.5rem;
+    color: white; text-align: center;
+  }
+  .partner-cta-box h3 {
+    font-family: 'DM Serif Display', serif; font-size: 1.8rem;
+    margin-bottom: 0.8rem; color: white;
+  }
+  .partner-cta-box p { opacity: 0.8; margin-bottom: 1.5rem; font-size: 0.95rem; }
+  .btn-gold { background: var(--gold); color: var(--dark); }
+  .btn-gold:hover { background: #FFB300; }
+
+  .partner-benefits { }
+  .partner-benefits h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1.2rem; color: var(--dark); }
+  .benefit-item {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+    padding: 0.8rem 0; border-bottom: 1px solid var(--border);
+  }
+  .benefit-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .benefit-item h4 { font-size: 0.9rem; font-weight: 600; color: var(--dark); }
+  .benefit-item p { font-size: 0.82rem; color: var(--muted); margin-top: 0.2rem; }
+
+  /* ===== TOKENOMICS ===== */
+  #tokenomics { background: white; }
+  .token-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2.5rem; margin-top: 3rem; align-items: start;
+  }
+  @media (max-width: 640px) { .token-grid { grid-template-columns: 1fr; } }
+
+  .allocation-bars { }
+  .alloc-item { margin-bottom: 1.2rem; }
+  .alloc-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 0.4rem;
+  }
+  .alloc-name { font-size: 0.875rem; font-weight: 600; color: var(--dark); }
+  .alloc-pct { font-size: 0.875rem; font-weight: 700; color: var(--forest); }
+  .alloc-bar-bg {
+    height: 10px; background: var(--border); border-radius: 999px; overflow: hidden;
+  }
+  .alloc-bar {
+    height: 100%; border-radius: 999px;
+    transition: width 1.2s ease;
+  }
+  .alloc-detail { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; }
+
+  .token-info { }
+  .token-spec {
+    background: var(--cream); border-radius: 16px; padding: 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .token-spec h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--forest); }
+  .spec-row {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding: 0.65rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+  }
+  .spec-row:last-child { border: none; }
+  .spec-key { color: var(--muted); }
+  .spec-val { font-weight: 600; color: var(--dark); text-align: right; }
+
+  /* ===== TESTIMONIALS ===== */
+  #testimonials { background: var(--cream); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .testi-card {
+    background: white; border-radius: 16px; padding: 2rem;
+    border: 1px solid var(--border);
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .testi-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px var(--shadow); }
+  .testi-quote {
+    font-size: 3rem; color: var(--gold); line-height: 1;
+    font-family: 'DM Serif Display', serif; margin-bottom: 0.5rem;
+  }
+  .testi-text {
+    font-size: 0.9rem; color: var(--dark); line-height: 1.7;
+    margin-bottom: 1.2rem; font-style: italic;
+  }
+  .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+  .testi-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--forest), var(--teal));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+  }
+  .testi-name { font-size: 0.875rem; font-weight: 700; color: var(--dark); }
+  .testi-role { font-size: 0.75rem; color: var(--muted); }
+  .testi-enb {
+    display: inline-block; margin-top: 0.4rem;
+    font-size: 0.7rem; font-weight: 700; color: var(--forest);
+    background: rgba(26,107,60,0.08); padding: 0.2rem 0.5rem;
+    border-radius: 999px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--dark); color: rgba(255,255,255,0.7);
+    padding: 4rem 1.5rem 2rem;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem; padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  @media (max-width: 640px) { .footer-top { grid-template-columns: 1fr; } }
+
+  .footer-brand { }
+  .footer-brand .nav-logo { width: 44px; height: 44px; font-size: 1.3rem; margin-bottom: 1rem; }
+  .footer-brand h2 { color: white; font-size: 1.2rem; margin-bottom: 0.6rem; }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.6; max-width: 320px; }
+
+  .footer-col h4 { color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; }
+  .footer-col a {
+    display: block; color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 0.85rem; margin-bottom: 0.6rem;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--gold); }
+
+  .footer-address {
+    background: rgba(255,255,255,0.05); border-radius: 10px; padding: 1rem;
+    margin-top: 1rem;
+  }
+  .footer-address p { font-size: 0.72rem; word-break: break-all; color: rgba(255,255,255,0.5); }
+  .footer-address .addr-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 0.3rem; font-weight: 700; }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    justify-content: space-between; align-items: flex-start;
+  }
+  .footer-legal { font-size: 0.72rem; color: rgba(255,255,255,0.35); max-width: 720px; line-height: 1.6; }
+  .footer-version { font-size: 0.72rem; color: rgba(255,255,255,0.3); white-space: nowrap; }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  /* counter animation */
+  .counter-val { display: inline-block; }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-nav-toggle {
+    display: none; background: none; border: none;
+    color: white; font-size: 1.4rem; cursor: pointer;
+  }
+  @media (max-width: 640px) { .mobile-nav-toggle { display: block; } }
+
+  /* ===== MISC ===== */
+  .highlight { color: var(--forest); }
+  .gold { color: var(--gold); }
+
+  .earning-rates {
+    margin-top: 3rem;
+    background: var(--cream); border-radius: 16px;
+    overflow: hidden; border: 1px solid var(--border);
+  }
+  .er-header {
+    background: var(--forest); color: white;
+    padding: 1rem 1.5rem; font-size: 0.875rem; font-weight: 700;
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+  }
+  .er-row {
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.82rem; color: var(--dark);
+    transition: background 0.15s;
+  }
+  .er-row:hover { background: white; }
+  .er-row:last-child { border: none; }
+  .er-enb { font-weight: 700; color: var(--forest); }
+  .er-rep { color: var(--teal); font-weight: 600; }
+
+  @media (max-width: 480px) {
+    .er-header, .er-row { grid-template-columns: 2fr 1fr; }
+    .er-header span:last-child, .er-row span:last-child { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-logo">🌿</div>
+    <span class="nav-name">Eco<span>-Neighbor</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#how">How It Works</a>
+    <a href="#impact">Impact</a>
+    <a href="#tokenomics">Tokenomics</a>
+    <a href="#investors">Investors</a>
+    <a href="https://eco-neighbor.vercel.app" class="nav-cta">Open App</a>
+  </div>
+  <button class="mobile-nav-toggle" onclick="this.nextElementSibling?.classList.toggle('show')" aria-label="Menu">☰</button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Eco-Neighbor · $ENB · Solana · v4.7</div>
+    <h1>Your Neighbourhood<br><em>Work Has Value.</em></h1>
+    <p class="hero-sub">
+      Earn ENB tokens for cleaning streets, sharing surplus food, teaching skills,
+      and doing verified trade work. Spend them at local businesses — all within
+      your 10 km community radius. No speculation. No trading. Just neighbours helping neighbours.
+    </p>
+    <div class="hero-actions">
+      <a href="https://eco-neighbor.vercel.app" class="btn btn-primary">Join Community</a>
+      <a href="#whitepaper" class="btn btn-outline">Read Whitepaper</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">10B</div>
+        <div class="hero-stat-label">ENB Fixed Supply</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">40+</div>
+        <div class="hero-stat-label">Urban Professions Covered</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Solana</div>
+        <div class="hero-stat-label">9-Decimal Precision</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">10 km</div>
+        <div class="hero-stat-label">Hyper-Local Radius</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== THE PROBLEM ===== -->
+<section id="problem">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The Problem We're Solving</div>
+      <h2 class="section-title">The People Who Keep Cities Running<br>Are the Least Rewarded</h2>
+      <p class="section-sub">3.4 billion people work in the informal economy. Their contributions are real. Their recognition is zero.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon">🔧</div>
+        <div class="problem-who">The Struggling Tradesperson</div>
+        <h3>Raza the Plumber Has No Credit Score</h3>
+        <p>He has fixed leaks in 200 homes. His neighbours trust him completely. But when he moves to the next suburb, that reputation disappears. Banks see nothing. No record. No financial identity.</p>
+        <div class="problem-quote">"I've been doing this for 15 years but I can't even get a small loan to buy better tools."</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🌱</div>
+        <div class="problem-who">The Ignored Volunteer</div>
+        <h3>Amna Plants Trees Every Saturday</h3>
+        <p>She organises neighbourhood cleanups, teaches girls basic literacy, and has planted 80 trees this year. Society benefits enormously. Amna earns nothing. No recognition. No proof.</p>
+        <div class="problem-quote">"I wouldn't stop doing this for money — but it would be nice if anyone noticed."</div>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon">🏪</div>
+        <div class="problem-who">The Local Business Owner</div>
+        <h3>Khalid's Bakery Spends 25% on Ads</h3>
+        <p>His best customers live 200 metres away. He pays Facebook and flyer printers to reach them — spending money that should go back into the community. There's no local loyalty infrastructure.</p>
+        <div class="problem-quote">"Why am I paying for ads to reach people I see at Friday prayers every week?"</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section id="how">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The ENB.LOCAL System</div>
+      <h2 class="section-title" style="color:white;">Simple Enough for a Street Vendor.<br>Robust Enough for Investors.</h2>
+      <p class="section-sub">Four steps. No crypto knowledge needed. Just do good in your neighbourhood.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-icon">🤝</div>
+        <div class="step-num">1</div>
+        <h3>Do Good</h3>
+        <p>Clean a park, share surplus food, teach a skill, complete a verified trade job, carpool with neighbours.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon">📷</div>
+        <div class="step-num">2</div>
+        <h3>Get Verified</h3>
+        <p>Submit geotagged photos via the ENB Web App. Our 7-layer system — AI + human review — confirms it's real.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon">🌿</div>
+        <div class="step-num">3</div>
+        <h3>Earn ENB</h3>
+        <p>ENB.LOCAL tokens appear in your wallet automatically. 1,000 ENB for a cleanup. 2,000 ENB for mentoring a youth.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon">🛍️</div>
+        <div class="step-num">4</div>
+        <h3>Spend Locally</h3>
+        <p>Redeem at partner businesses on your street. 1,000 ENB = 1 cup of chai. Always. The price never changes.</p>
+      </div>
+    </div>
+
+    <!-- Earning Rates Table -->
+    <div class="earning-rates reveal" style="margin-top:4rem;">
+      <div class="er-header">
+        <span>Verified Action</span>
+        <span>ENB.LOCAL Earned</span>
+        <span>Rep Points</span>
+      </div>
+      <div class="er-row">
+        <span>Neighbourhood cleanup (1 hr, geotagged)</span>
+        <span class="er-enb">1,000 ENB</span>
+        <span class="er-rep">500 pts</span>
+      </div>
+      <div class="er-row">
+        <span>Surplus food sharing (CFSP batch)</span>
+        <span class="er-enb">800–1,500 ENB</span>
+        <span class="er-rep">300 pts</span>
+      </div>
+      <div class="er-row">
+        <span>Skill workshop (30 min, attended)</span>
+        <span class="er-enb">1,500 ENB</span>
+        <span class="er-rep">1,000 pts</span>
+      </div>
+      <div class="er-row">
+        <span>Verified trade job (5-star confirmed)</span>
+        <span class="er-enb">1,000 ENB</span>
+        <span class="er-rep">800 pts</span>
+      </div>
+      <div class="er-row">
+        <span>Mentor a youth (1 session)</span>
+        <span class="er-enb">2,000 ENB</span>
+        <span class="er-rep">1,500 pts</span>
+      </div>
+      <div class="er-row">
+        <span>Tree planting (GPS + photo verified)</span>
+        <span class="er-enb">2,000 ENB</span>
+        <span class="er-rep">1,200 pts</span>
+      </div>
+      <div class="er-row">
+        <span>Sorted recyclables drop-off</span>
+        <span class="er-enb">500 ENB/bag</span>
+        <span class="er-rep">200 pts</span>
+      </div>
+      <div class="er-row">
+        <span>Group carpool (3+ people)</span>
+        <span class="er-enb">300 ENB/person</span>
+        <span class="er-rep">100 pts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHO EARNS ENB ===== -->
+<section id="professions">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">The Profession Ecosystem</div>
+      <h2 class="section-title">Every Neighbourhood Worker<br>Has a Place in ENB</h2>
+      <p class="section-sub">40+ urban professions are formally recognised. If you work in a community, you can earn here.</p>
+    </div>
+    <div class="prof-grid">
+      <div class="prof-item reveal"><span class="prof-emoji">🔧</span><span class="prof-name">Plumber</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">⚡</span><span class="prof-name">Electrician</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🪛</span><span class="prof-name">Carpenter</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🎨</span><span class="prof-name">Painter</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🧵</span><span class="prof-name">Tailor</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🧹</span><span class="prof-name">Cleaner</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🍞</span><span class="prof-name">Baker</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🛵</span><span class="prof-name">Delivery Rider</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🥛</span><span class="prof-name">Milkman</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🌿</span><span class="prof-name">Herbalist</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🚗</span><span class="prof-name">Auto Mechanic</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">✂️</span><span class="prof-name">Barber</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🍳</span><span class="prof-name">Dhaba Cook</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">📚</span><span class="prof-name">Tutor</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🌳</span><span class="prof-name">Gardener</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🏗️</span><span class="prof-name">Mason</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🚌</span><span class="prof-name">Van Driver</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🎓</span><span class="prof-name">Volunteer Teacher</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">👩‍⚕️</span><span class="prof-name">Community Nurse</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🛠️</span><span class="prof-name">Welder</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🧴</span><span class="prof-name">Beautician</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">📦</span><span class="prof-name">Street Vendor</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🐄</span><span class="prof-name">Livestock Keeper</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">♻️</span><span class="prof-name">Recycler</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🔑</span><span class="prof-name">Locksmith</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">📷</span><span class="prof-name">Photographer</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🌾</span><span class="prof-name">Wholesale Trader</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🎺</span><span class="prof-name">Cultural Worker</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🏡</span><span class="prof-name">Neighbourhood Elder</span></div>
+      <div class="prof-item reveal"><span class="prof-emoji">🤲</span><span class="prof-name">NGO Worker</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DUAL LAYER ===== -->
+<section id="dual">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Architecture</div>
+      <h2 class="section-title">Two Layers. One Ecosystem.<br>Zero Speculation Risk.</h2>
+      <p class="section-sub">ENB's breakthrough design permanently separates community utility from global investment. The Maturation Bridge connects them — on the community's terms.</p>
+    </div>
+    <div class="dual-wrap reveal">
+      <div class="layer-card layer-local">
+        <span class="layer-badge">Layer 1 · ENB.LOCAL</span>
+        <h3>For the Community</h3>
+        <ul class="layer-features">
+          <li>Earned through verified community actions</li>
+          <li>Spent at partner local businesses</li>
+          <li>Cannot be listed or traded on any DEX</li>
+          <li>Value anchored in real goods (always stable)</li>
+          <li>Whole-number only — no decimals needed</li>
+          <li>Soulbound reputation score protects earners</li>
+        </ul>
+        <div class="layer-metaphor">Like airline miles — earn, spend, cannot sell. 1,000 ENB.LOCAL = 1 cup of chai. Forever.</div>
+      </div>
+
+      <div class="dual-connector">
+        <div class="bridge-arrow">↕</div>
+        <div class="bridge-box">Maturation Bridge<br><span style="font-size:0.6rem;font-weight:400;display:block;margin-top:2px;">365 days · 50k Rep Score · 20% cap</span></div>
+        <div class="bridge-arrow">↕</div>
+        <div style="font-size:0.72rem;color:var(--muted);text-align:center;max-width:120px;line-height:1.5;">One-way valve. Community earners only. No speculation farming.</div>
+      </div>
+
+      <div class="layer-card layer-global">
+        <span class="layer-badge">Layer 2 · ENB.GLOBAL</span>
+        <h3>For Impact Investors</h3>
+        <ul class="layer-features">
+          <li>Held by impact funds &amp; Web3 public goods funds</li>
+          <li>Freely tradeable on Raydium DEX (Solana)</li>
+          <li>Appreciates as the ecosystem grows</li>
+          <li>Grants governance rights + protocol fee share</li>
+          <li>9-decimal precision for micro-payments</li>
+          <li>Founder sale restriction: max 10%/year, months 12–60</li>
+        </ul>
+        <div class="layer-metaphor">Like equity — a stake in the network's success. Gitcoin QF · Celo · UNICEF CryptoFund eligible.</div>
+      </div>
+    </div>
+
+    <!-- Bridge Conditions -->
+    <div class="reveal" style="margin-top:2.5rem;background:var(--cream);border-radius:16px;padding:2rem;border:1px solid var(--border);">
+      <h3 style="font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:1.2rem;">Maturation Bridge — All 4 Conditions Must Be Met Simultaneously</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;">
+        <div style="background:white;border-radius:12px;padding:1rem;border:1px solid var(--border);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Time Lock</div>
+          <div style="font-size:0.875rem;font-weight:600;">365 days</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Continuous hold in same wallet. No transfers.</div>
+        </div>
+        <div style="background:white;border-radius:12px;padding:1rem;border:1px solid var(--border);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Conversion Cap</div>
+          <div style="font-size:0.875rem;font-weight:600;">Max 20% per year</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">80% stays in local circulation always.</div>
+        </div>
+        <div style="background:white;border-radius:12px;padding:1rem;border:1px solid var(--border);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Reputation Gate</div>
+          <div style="font-size:0.875rem;font-weight:600;">50,000 Rep Points</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Pillar Tier. Cannot be bought — only earned.</div>
+        </div>
+        <div style="background:white;border-radius:12px;padding:1rem;border:1px solid var(--border);">
+          <div style="font-size:0.7rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.4rem;">Community Vote</div>
+          <div style="font-size:0.875rem;font-weight:600;">Batches &gt;500K ENB</div>
+          <div style="font-size:0.78rem;color:var(--muted);margin-top:0.2rem;">Snapshot governance vote by Pillar+ holders.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== IMPACT NUMBERS ===== -->
+<section id="impact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label" style="color:rgba(255,255,255,0.7);">Impact at Scale</div>
+      <h2 class="section-title" style="color:white;">What a Circular Economy<br>Looks Like in Numbers</h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-stat reveal">
+        <span class="impact-num counter-val" data-target="3400000000">0</span>
+        <div class="impact-label">Informal workers globally who need this</div>
+        <div class="impact-note">Source: ILO World Employment Report</div>
+      </div>
+      <div class="impact-stat reveal">
+        <span class="impact-num">5,000,000,000</span>
+        <div class="impact-label">ENB.LOCAL in Community Rewards Pool</div>
+        <div class="impact-note">Smart-contract locked. Released only via verified actions.</div>
+      </div>
+      <div class="impact-stat reveal">
+        <span class="impact-num">10 km</span>
+        <div class="impact-label">Maximum community radius</div>
+        <div class="impact-note">Every holder is a neighbour. Every business is on your street.</div>
+      </div>
+      <div class="impact-stat reveal">
+        <span class="impact-num">7-Layer</span>
+        <div class="impact-label">Submission verification stack</div>
+        <div class="impact-note">AI vision · dual blind human review · whistleblower mechanism</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOR IMPACT INVESTORS ===== -->
+<section id="investors">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">For Impact Investors</div>
+      <h2 class="section-title">This Is Public Goods Finance,<br>Not Speculative Crypto</h2>
+      <p class="section-sub">ENB is formally positioned for institutional impact funding — not retail speculation. Every mechanism is designed for long-term sustainability.</p>
+    </div>
+    <div class="investor-grid">
+      <div class="investor-card reveal">
+        <div class="investor-icon">🌱</div>
+        <h3>Gitcoin Quadratic Funding</h3>
+        <p>ENB's community-verified impact model aligns perfectly with Gitcoin QF rounds. Each verified action generates a timestamped, photo-evidenced record suitable for grant reporting and matching fund applications.</p>
+        <span class="investor-tag">Web3 Public Goods</span>
+      </div>
+      <div class="investor-card reveal">
+        <div class="investor-icon">🌍</div>
+        <h3>Carbon Credit Eligibility</h3>
+        <p>Tree planting, carpooling, waste sorting, and food sharing all generate verifiable environmental actions. The Cloudinary photo evidence trail supports carbon credit methodology documentation.</p>
+        <span class="investor-tag">Environmental Impact</span>
+      </div>
+      <div class="investor-card reveal">
+        <div class="investor-icon">🏛️</div>
+        <h3>SDG Alignment</h3>
+        <p>ENB directly addresses SDG 1 (No Poverty), SDG 8 (Decent Work), SDG 11 (Sustainable Cities), and SDG 17 (Partnerships). Municipal grant applications supported with full documentation.</p>
+        <span class="investor-tag">UN SDG Framework</span>
+      </div>
+      <div class="investor-card reveal">
+        <div class="investor-icon">🔐</div>
+        <h3>Institutional Safeguards</h3>
+        <p>5-of-7 multi-sig on Squads.so. Mint authority renounced after genesis. Freeze authority renounced. Founding member sale restriction 12–60 months. Auto-Replenishment Protocol for reserve management.</p>
+        <span class="investor-tag">UNICEF CryptoFund Eligible</span>
+      </div>
+      <div class="investor-card reveal">
+        <div class="investor-icon">🤝</div>
+        <h3>Celo Public Goods Fund</h3>
+        <p>ENB's hyper-local circular economy model and community-first token architecture positions it as a natural fit for Celo's impact-focused grant programme and mobile-first philosophy.</p>
+        <span class="investor-tag">Celo Ecosystem</span>
+      </div>
+      <div class="investor-card reveal">
+        <div class="investor-icon">📊</div>
+        <h3>Community Food Sharing Programme</h3>
+        <p>Part V of the whitepaper details a complete food redistribution policy with guardian framework, food safety protocol, logistics, and ENB incentive schedule — a standalone impact use case.</p>
+        <span class="investor-tag">Food Security · SDG 2</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PARTNER BUSINESSES ===== -->
+<section id="partner">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">For Local Businesses</div>
+      <h2 class="section-title">Your Best Customers<br>Already Live Nearby</h2>
+    </div>
+    <div class="partner-inner">
+      <div class="partner-cta-box reveal">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🏪</div>
+        <h3>Become a Partner Business</h3>
+        <p>Join the ENB.LOCAL network and receive customers who are already engaged, verified community members — no ad spend required.</p>
+        <a href="https://eco-neighbor.vercel.app" class="btn btn-gold">Join as a Partner</a>
+        <div style="margin-top:1.2rem;font-size:0.75rem;opacity:0.6;">10 Founding Business Partners receive 1,300,000 ENB each</div>
+      </div>
+      <div class="partner-benefits reveal">
+        <h3>What Partner Businesses Receive</h3>
+        <div class="benefit-item">
+          <div class="benefit-icon">📈</div>
+          <div>
+            <h4>Foot Traffic from Verified Community Members</h4>
+            <p>Every ENB earner is a verified, locally-active neighbour — the highest-quality customer you can have.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🔄</div>
+          <div>
+            <h4>Auto-Replenishment Protocol (ARP)</h4>
+            <p>Your ENB float is automatically topped up when it drops below 30% — zero manual management required.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📣</div>
+          <div>
+            <h4>WhatsApp Community Promotion</h4>
+            <p>Featured in neighbourhood WhatsApp broadcast lists reaching your local community directly.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🌿</div>
+          <div>
+            <h4>Eco-Verified Business Status</h4>
+            <p>Display the ENB Partner badge — signal your commitment to local sustainability and community values.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🏛️</div>
+          <div>
+            <h4>Zero Upfront Cash Required</h4>
+            <p>Partners receive a Business Partner Float from the 1.5B ENB reserve. Accept ENB, not cash investment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TOKENOMICS ===== -->
+<section id="tokenomics">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Tokenomics</div>
+      <h2 class="section-title">10 Billion ENB.<br>Built for Longevity.</h2>
+      <p class="section-sub">Fixed supply. Renounced mint authority. Every allocation serves the community first.</p>
+    </div>
+    <div class="token-grid">
+      <div class="allocation-bars reveal">
+        <div class="alloc-item">
+          <div class="alloc-header">
+            <span class="alloc-name">Community Rewards Pool (ENB.LOCAL)</span>
+            <span class="alloc-pct">50%</span>
+          </div>
+          <div class="alloc-bar-bg"><div class="alloc-bar" style="width:50%;background:linear-gradient(90deg,#1A6B3C,#00796B);"></div></div>
+          <div class="alloc-detail">5,000,000,000 ENB · Smart-contract locked · released via verified actions</div>
+        </div>
+        <div class="alloc-item">
+          <div class="alloc-header">
+            <span class="alloc-name">Business Partner Reserve</span>
+            <span class="alloc-pct">15%</span>
+          </div>
+          <div class="alloc-bar-bg"><div class="alloc-bar" style="width:15%;background:linear-gradient(90deg,#00796B,#00897B);"></div></div>
+          <div class="alloc-detail">1,500,000,000 ENB · ARP: 40% alert, 30% auto top-up</div>
+        </div>
+        <div class="alloc-item">
+          <div class="alloc-header">
+            <span class="alloc-name">ENB.GLOBAL Liquidity Pool</span>
+            <span class="alloc-pct">10%</span>
+          </div>
+          <div class="alloc-bar-bg"><div class="alloc-bar" style="width:10%;background:linear-gradient(90deg,#F9A825,#FFB300);"></div></div>
+          <div class="alloc-detail">1,000,000,000 ENB · Raydium DEX · LP locked 12 months via Streamflow</div>
+        </div>
+        <div class="alloc-item">
+          <div class="alloc-header">
+            <span class="alloc-name">Impact Grants &amp; Marketing</span>
+            <span class="alloc-pct">10%</span>
+          </div>
+          <div class="alloc-bar-bg"><div class="alloc-bar" style="width:10%;background:linear-gradient(90deg,#2E7D32,#388E3C);"></div></div>
+          <div class="alloc-detail">1,000,000,000 ENB · Gitcoin, Celo, municipal grants, Community Day events</div>
+        </div>
+        <div class="alloc-item">
+          <div class="alloc-header">
+            <span class="alloc-name">Founding Contributors</span>
+            <span class="alloc-pct">5%</span>
+          </div>
+          <div class="alloc-bar-bg"><div class="alloc-bar" style="width:5%;background:linear-gradient(90deg,#455A64,#546E7A);"></div></div>
+          <div class="alloc-detail">500,000,000 ENB · 12-month cliff, 36-month vest · max 10%/year sale after Month 12</div>
+        </div>
+        <div class="alloc-item">
+          <div class="alloc-header">
+            <span class="alloc-name">Development Fund</span>
+            <span class="alloc-pct">5%</span>
+          </div>
+          <div class="alloc-bar-bg"><div class="alloc-bar" style="width:5%;background:linear-gradient(90deg,#558B2F,#689F38);"></div></div>
+          <div class="alloc-detail">500,000,000 ENB · Vercel + Supabase + Cloudinary · 12-month linear vest</div>
+        </div>
+        <div class="alloc-item">
+          <div class="alloc-header">
+            <span class="alloc-name">Emergency Reserve + Community Builder</span>
+            <span class="alloc-pct">5%+5%</span>
+          </div>
+          <div class="alloc-bar-bg"><div class="alloc-bar" style="width:10%;background:linear-gradient(90deg,#BF360C,#D84315);"></div></div>
+          <div class="alloc-detail">1,000,000,000 ENB · 5-of-7 multi-sig · Community Builder: first 50 achievers of 100 actions</div>
+        </div>
+      </div>
+
+      <div class="token-info reveal">
+        <div class="token-spec">
+          <h3>Technical Specification</h3>
+          <div class="spec-row"><span class="spec-key">Token Name</span><span class="spec-val">Eco-Neighbor Token</span></div>
+          <div class="spec-row"><span class="spec-key">Ticker</span><span class="spec-val">$ENB</span></div>
+          <div class="spec-row"><span class="spec-key">Blockchain</span><span class="spec-val">Solana Mainnet (SPL)</span></div>
+          <div class="spec-row"><span class="spec-key">Total Supply</span><span class="spec-val">10,000,000,000 ENB</span></div>
+          <div class="spec-row"><span class="spec-key">Decimals</span><span class="spec-val">9 (ENB.GLOBAL only)</span></div>
+          <div class="spec-row"><span class="spec-key">ENB.LOCAL</span><span class="spec-val">Whole numbers only</span></div>
+          <div class="spec-row"><span class="spec-key">Mint Authority</span><span class="spec-val">Renounced at genesis</span></div>
+          <div class="spec-row"><span class="spec-key">Freeze Authority</span><span class="spec-val">Renounced forever</span></div>
+          <div class="spec-row"><span class="spec-key">DEX</span><span class="spec-val">Raydium (ENB.GLOBAL)</span></div>
+          <div class="spec-row"><span class="spec-key">Web App</span><span class="spec-val">eco-neighbor.vercel.app</span></div>
+        </div>
+
+        <div style="margin-top:1rem;background:rgba(249,168,37,0.08);border:1px solid rgba(249,168,37,0.3);border-radius:12px;padding:1.2rem;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.5rem;">Verification Stack</div>
+          <div style="font-size:0.8rem;color:var(--dark);line-height:1.7;">
+            Camera lock · Behavioural CAPTCHA (Urdu/Pakistan) · AI vision moderation · Dual blind human review · Moderator compensation (500 ENB/approval) · Whistleblower mechanism · Cross-neighbourhood AI anomaly monitor
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section id="testimonials">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Community Voices</div>
+      <h2 class="section-title">Neighbours Who Showed Up<br>Now Have Something to Show For It</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">I fixed a burst pipe for an elderly woman last week. Took me two hours. Before ENB, I'd just do it out of goodness and move on. Now it's on my record — I earned 1,000 ENB and my reputation score went up. The supermarket down the road gives me a discount. It actually works.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🔧</div>
+          <div>
+            <div class="testi-name">Raza Ahmed</div>
+            <div class="testi-role">Plumber · Gulberg, Lahore</div>
+            <span class="testi-enb">4,200 ENB earned · Helper Tier</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">Every morning I have leftover bread from yesterday. Used to throw it or feel guilty. Now I log it in the app, a Guardian verifies it, and it goes to the family three streets over who needs it. I earn ENB for something I was already doing. This is what community is supposed to be.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🍞</div>
+          <div>
+            <div class="testi-name">Khalid Mehmood</div>
+            <div class="testi-role">Baker · DHA, Karachi</div>
+            <span class="testi-enb">2,800 ENB earned · Seeder Tier</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">I volunteer every weekend. Park cleanups, tutoring sessions for kids who can't afford school. My family always said, that's nice, but what does it pay? Now I show them my ENB balance. I used 3,000 ENB for a month of free oil changes at the garage partner. It's not a lot, but it's real.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">🌱</div>
+          <div>
+            <div class="testi-name">Amna Siddiqui</div>
+            <div class="testi-role">Volunteer · F-7, Islamabad</div>
+            <span class="testi-enb">7,500 ENB earned · Helper Tier</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="whitepaper">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo" style="width:44px;height:44px;font-size:1.3rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,#1A6B3C,#F9A825);">🌿</div>
+        <h2>Eco-Neighbor $ENB</h2>
+        <p>A hyper-local community utility token on Solana. Web3 for the real world. Rewarding the people who keep cities running — one verified act of service at a time.</p>
+        <div class="footer-address">
+          <div class="addr-label">Solana Token Address (ENB.GLOBAL)</div>
+          <p>[Token address will appear post-deployment on Solana Mainnet]</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="https://eco-neighbor.vercel.app">Web App</a>
+        <a href="#">Whitepaper v4.7 (PDF)</a>
+        <a href="#how">How It Works</a>
+        <a href="#professions">Profession List</a>
+        <a href="#tokenomics">Tokenomics</a>
+        <a href="#dual">Dual-Layer Explained</a>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="#">WhatsApp Community</a>
+        <a href="#investors">For Impact Investors</a>
+        <a href="#partner">Partner Businesses</a>
+        <a href="#">Community Food Sharing</a>
+        <a href="#">Gitcoin QF Round</a>
+        <a href="#">Report a Bug</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-legal">
+        <strong style="color:rgba(255,255,255,0.5);">Legal Disclaimer:</strong> $ENB (Eco-Neighbor Token) is a utility token designed for hyper-local community service recognition and redemption. ENB.LOCAL is non-tradeable and holds no market value. ENB.GLOBAL is freely tradeable on Solana DEXs and carries inherent cryptocurrency risk. Nothing in this website constitutes financial, investment, or legal advice. Participation in the ENB ecosystem does not constitute purchase of a security. Regulatory frameworks for digital assets vary by jurisdiction — participants are responsible for compliance with their local laws. This project is in active development. All figures, timelines, and partner details are subject to change. v4.7 · March 2026.
+      </p>
+      <div class="footer-version">Whitepaper v4.7 · March 2026<br>Built on Solana · Vercel + Supabase</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Progressive enhancement: scroll reveals
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+// Animated counter
+function animateCounter(el, target, duration) {
+  const start = performance.now();
+  const format = n => {
+    if (n >= 1e9) return (n / 1e9).toFixed(1) + 'B';
+    if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+    return n.toLocaleString();
+  };
+  function step(ts) {
+    const progress = Math.min((ts - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = format(Math.floor(ease * target));
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+if ('IntersectionObserver' in window) {
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        if (!isNaN(target)) animateCounter(el, target, 2000);
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter-val[data-target]').forEach(el => counterObs.observe(el));
+}
+
+// Stagger reveal children
+document.querySelectorAll('.problem-grid, .steps, .prof-grid, .investor-grid, .testi-grid').forEach(grid => {
+  grid.querySelectorAll('.reveal').forEach((child, i) => {
+    child.style.transitionDelay = `${i * 0.08}s`;
+  });
+});
+</script>
+</body>
+</html>
