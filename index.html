@@ -610,7 +610,7 @@
     <div class="hero-actions">
       <a href="https://eco-neighbor.vercel.app" class="btn btn-primary">Join Community</a>
       <a href="https://giveth.io/project/eco-neighbor-enb" target="_blank" class="btn btn-outline">Support on Giveth</a>
-      <a href="/cdn-cgi/l/email-protection#086d6b67666d616f606a677a617b6d666a486f65696164266b6765377b7d6a626d6b7c354d464a2d3a385f60617c6d7869786d7a2d3a387e3c263f2d3a385a6d797d6d7b7c2e6a676c713540612d3a4b2d3a38412d3a387f677d646c2d3a386461636d2d3a387c672d3a387a6d797d6d7b7c2d3a387c606d2d3a384d6b6725466d616f606a677a2d3a385c67636d662d3a385f60617c6d7869786d7a2d3a387e3c263f26" class="btn btn-outline" style="border-color:rgba(249,168,37,0.4);color:#F9A825;">📄 Request Whitepaper</a>
+      <a href="#" onclick="window.location.href='mail'+'to:econeighborisenb'+'@'+'gmail.com?subject=ENB Whitepaper v4.7 Request&body=Hi, I would like to request the Eco-Neighbor Token Whitepaper v4.7.';return false;" class="btn btn-outline" style="border-color:rgba(249,168,37,0.4);color:#F9A825;">📄 Request Whitepaper</a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
@@ -1165,7 +1165,7 @@
         <div class="nav-logo" style="width:44px;height:44px;font-size:1.3rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,#1A6B3C,#F9A825);">🌿</div>
         <h2>Eco-Neighbor $ENB</h2>
         <p>A hyper-local community utility token on Solana. Web3 for the real world. Rewarding the people who keep cities running — one verified act of service at a time.</p>
-        <p style="margin-top:0.8rem;font-size:0.82rem;">📧 <a href="/cdn-cgi/l/email-protection#b0d5d3dfded5d9d7d8d2dfc2d9c3d5ded2f0d7ddd1d9dc9ed3dfdd" style="color:#F9A825;text-decoration:none;"><span class="__cf_email__" data-cfemail="3752545859525e505f5558455e4452595577505a565e5b1954585a">[email&#160;protected]</span></a></p>
+        <p style="margin-top:0.8rem;font-size:0.82rem;">📧 <span style="color:#F9A825;cursor:pointer;" onclick="window.location.href='mail'+'to:econeighborisenb'+'@'+'gmail.com';">econeighborisenb@gmail.com</span></p>
         <div class="footer-address">
           <div class="addr-label">Solana Token Address (ENB.GLOBAL)</div>
           <p style="color:rgba(255,255,255,0.6);font-size:0.75rem;">Deploying on Solana Mainnet — Q2 2026<br>Devnet contract active · Mainnet address published at launch</p>
@@ -1174,7 +1174,7 @@
       <div class="footer-col">
         <h4>Resources</h4>
         <a href="https://eco-neighbor.vercel.app">Web App</a>
-        <a href="/cdn-cgi/l/email-protection#bfdadcd0d1dad6d8d7ddd0cdd6ccdad1ddffd8d2ded6d391dcd0d280cccaddd5dadccb82faf1fd9a8d8fe8d7d6cbdacfdecfdacd9a8d8fc98b91889a8d8feddacecadacccb99ddd0dbc682f7d69a8dfc9a8d8ff69a8d8fc8d0cad3db9a8d8fd3d6d4da9a8d8fcbd09a8d8fcddacecadacccb9a8d8fcbd7da9a8d8ffadcd092f1dad6d8d7ddd0cd9a8d8febd0d4dad19a8d8fe8d7d6cbdacfdecfdacd9a8d8fc98b918891">Whitepaper v4.7 — Request via Email</a>
+        <a href="#" onclick="window.location.href='mail'+'to:econeighborisenb'+'@'+'gmail.com?subject=ENB Whitepaper v4.7 Request&body=Hi, I would like to request the Eco-Neighbor Token Whitepaper v4.7.';return false;">Whitepaper v4.7 — Request via Email</a>
         <a href="#how">How It Works</a>
         <a href="#professions">Profession List</a>
         <a href="#tokenomics">Tokenomics</a>
@@ -1199,7 +1199,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // Progressive enhancement: scroll reveals
 if ('IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
@@ -1234,4 +1234,23 @@ function animateCounter(el, target, duration) {
 if ('IntersectionObserver' in window) {
   const counterObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if 
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        if (!isNaN(target)) animateCounter(el, target, 2000);
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter-val[data-target]').forEach(el => counterObs.observe(el));
+}
+
+// Stagger reveal children
+document.querySelectorAll('.problem-grid, .steps, .prof-grid, .investor-grid, .testi-grid').forEach(grid => {
+  grid.querySelectorAll('.reveal').forEach((child, i) => {
+    child.style.transitionDelay = `${i * 0.08}s`;
+  });
+});
+</script>
+</body>
+</html>
