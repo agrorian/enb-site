@@ -1234,4 +1234,23 @@ function animateCounter(el, target, duration) {
 if ('IntersectionObserver' in window) {
   const counterObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if 
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target);
+        if (!isNaN(target)) animateCounter(el, target, 2000);
+        counterObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter-val[data-target]').forEach(el => counterObs.observe(el));
+}
+
+// Stagger reveal children
+document.querySelectorAll('.problem-grid, .steps, .prof-grid, .investor-grid, .testi-grid').forEach(grid => {
+  grid.querySelectorAll('.reveal').forEach((child, i) => {
+    child.style.transitionDelay = `${i * 0.08}s`;
+  });
+});
+</script>
+</body>
+</html>
